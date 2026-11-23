@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SHYNE CHRITAL">
+    <meta name="format-detection" content="telephone=yes">
+    <title>SHYNE CHRITAL - Plateforme de Minage Premium</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #06130e;
+            --bg-card: #0c1f17;
+            --bg-card-elevated: #112a1f;
+            --emerald-primary: #10b981;
+            --emerald-glow: rgba(16, 185, 129, 0.25);
+            --gold-primary: #f59e0b;
+            --gold-light: #fcd34d;
+            --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+            --emerald-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(16, 185, 129, 0.2);
+            --border-gold: rgba(245, 158, 11, 0.35);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #030a07;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container-app {
+            width: 100%;
+            max-width: 480px;
+            background: radial-gradient(circle at top right, #0d2b1f 0%, var(--bg-dark) 45%);
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+            border-left: 1px solid rgba(255,255,255,0.04);
+            border-right: 1px solid rgba(255,255,255,0.04);
+        }
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            padding-bottom: 105px;
+        }
+        .hidden { display: none !important; }
+
+        /* CARDS PREMIUM */
+        .card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            margin-bottom: 16px;
+        }
+        .hero-wallet-card {
+            background: linear-gradient(145deg, #0f2e22 0%, #071912 60%, #132a1e 100%);
+            border-radius: 26px;
+            padding: 22px;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-wallet-card::before {
+            content: "";
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* BOUTONS PREMIUM */
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #06130e;
+            font-weight: 800;
+            width: 100%;
+            padding: 14px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 13px;
+            box-shadow: 0 6px 18px rgba(245, 158, 11, 0.3);
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+        .btn-gold:active { transform: scale(0.98); }
+
+        .btn-dark {
+            background: var(--emerald-gradient);
+            color: #ffffff;
+            font-weight: 800;
+            width: 100%;
+            padding: 15px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+        }
+        .btn-dark:disabled, button:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 13px;
+            backdrop-filter: blur(8px);
+        }
+        .btn-green-action {
+            background: var(--emerald-gradient);
+            color: #ffffff;
+            font-weight: bold;
+            width: 100%;
+            padding: 14px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-green {
+            background-color: #10b981;
+            color: #06130e;
+            font-weight: 800;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .btn-red {
+            background-color: #ef4444;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        /* INPUTS */
+        .input-field {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 16px;
+            padding: 14px;
+            font-size: 14px;
+            color: #ffffff;
+            outline: none;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+        .input-field:focus { border-color: var(--gold-primary); }
+        .input-field option { background: #0c1f17; color: white; }
+        .error-msg {
+            color: #f87171;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+        }
+        label { font-size: 12px; font-weight: 700; color: #a7f3d0; display: block; margin-top: 8px; }
+
+        /* CARTE MINEUR PREMIUM */
+        .miner-card {
+            background: linear-gradient(160deg, #0e241b 0%, #081711 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 22px;
+            padding: 16px;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .miner-card.vip-gold {
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            background: linear-gradient(160deg, #1a2417 0%, #0b1610 100%);
+        }
+        .miner-badge {
+            font-size: 10px;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .miner-icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulseAnim 1.5s infinite;
+        }
+        @keyframes pulseAnim {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* FILTER PILLS */
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .filter-pills::-webkit-scrollbar { display: none; }
+        .pill-btn {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .pill-btn.active {
+            background: var(--gold-gradient);
+            color: #06130e;
+            border-color: transparent;
+        }
+
+        .wheel-spinning { transition: transform 4s cubic-bezier(0.15, 0.99, 0.18, 1); }
+        .telegram-float {
+            position: fixed;
+            bottom: 82px;
+            right: 16px;
+            background: linear-gradient(135deg, #0088cc, #00a8e8);
+            color: white;
+            border-radius: 50px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            box-shadow: 0 6px 18px rgba(0, 136, 204, 0.45);
+            text-decoration: none;
+            z-index: 99;
+        }
+
+        /* MODALES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+        .modal-content {
+            background: #0d231a;
+            border: 1px solid var(--border-gold);
+            border-radius: 26px;
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative;
+            color: var(--text-main);
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: rgba(255,255,255,0.08);
+            border: none;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            color: #a7f3d0;
+        }
+        .tx-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 12px;
+        }
+        .tx-item:last-child { border-bottom: none; }
+
+        /* NAVIGATION BASSE */
+        nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(8, 22, 16, 0.94);
+            backdrop-filter: blur(14px);
+            border-top: 1px solid rgba(245, 158, 11, 0.2);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px;
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            z-index: 98;
+        }
+        nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: inherit;
+            -webkit-tap-highlight-color: transparent;
+            transition: color 0.2s ease;
+        }
+        nav button.active-nav {
+            color: var(--gold-light);
+        }
+
+        .pay-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+        .pay-tab-btn { padding: 10px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); font-weight: bold; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; color: #e2e8f0; }
+        .pay-tab-btn.active-om { border-color: #f97316; background: rgba(249, 115, 22, 0.15); color: #fdba74; }
+        .pay-tab-btn.active-wave { border-color: #38bdf8; background: rgba(56, 189, 248, 0.15); color: #7dd3fc; }
+        .copy-box { background: rgba(0,0,0,0.35); border: 1px dashed #10b981; border-radius: 12px; padding: 10px; display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-family: monospace; font-size: 13px; font-weight: bold; color: #34d399; }
+        .btn-copy-mini { background: #10b981; color: #06130e; border: none; border-radius: 8px; padding: 6px 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
+        .btn-wave { background-color: #0284c7; color: #ffffff; font-weight: bold; width: 100%; padding: 14px; border-radius: 16px; border: none; cursor: pointer; font-size: 14px; display: block; text-align: center; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <!-- ÉCRAN DE BANNISSEMENT MATÉRIEL -->
+    <div id="device-banned-screen" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #450a0a; z-index: 9998; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; color: white;">
+        <div class="card" style="background: #1f0707; color: #fca5a5; max-width: 400px; width: 100%; border-radius: 24px; padding: 24px; border: 2px solid #ef4444;">
+            <div style="width: 56px; height: 56px; background: rgba(239,68,68,0.2); color: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 24px;">
+                <i class="fa-solid fa-ban"></i>
+            </div>
+            <h2 style="font-size: 18px; font-weight: 900; margin-bottom: 8px; color: white;">Appareil Banni</h2>
+            <p style="font-size: 12px; color: #fecaca; margin-bottom: 16px; line-height: 1.5;">
+                Votre appareil a été banni suite à une violation des règles de sécurité. Vous ne pouvez plus accéder à SHYNE CHRITAL depuis cet appareil.
+            </p>
+        </div>
+    </div>
+
+    <div class="container-app">
+        <!-- BANNIÈRE DE NOTIFICATION EN DIRECT POUR L'ADMIN -->
+        <div id="admin-live-toast" class="hidden" onclick="window.toggleAdminMode()" style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); max-width: 448px; background: #0c261c; color: white; border: 2px solid #f59e0b; border-radius: 16px; padding: 12px 16px; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.6); cursor: pointer; display: flex; align-items: center; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #ef4444; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px;">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div style="flex: 1;">
+                <p id="admin-toast-title" style="font-size: 12px; font-weight: 900; color: #fcd34d;">Nouvelle Notification !</p>
+                <p id="admin-toast-msg" style="font-size: 11px; color: #ecfdf5; margin-top: 2px;">Un utilisateur vient d'effectuer un dépôt.</p>
+            </div>
+            <span style="background: #f59e0b; color: #06130e; padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: 800;">Voir</span>
+        </div>
+
+        <a href="https://t.me/+HEP2CcTBGs5iZmZk" target="_blank" class="telegram-float">
+            <i class="fa-brands fa-telegram" style="font-size: 16px;"></i>
+            <span>Telegram VIP</span>
+        </a>
+
+        <main>
+            <!-- PAGE D'AUTHENTIFICATION / INSCRIPTION PREMIUM -->
+            <div id="tab-register" class="tab-content" style="padding-top: 28px;">
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div style="width: 64px; height: 64px; background: var(--gold-gradient); border-radius: 20px; margin: 0 auto 14px auto; display: flex; align-items: center; justify-content: center; color: #06130e; font-size: 28px; box-shadow: 0 12px 24px rgba(245, 158, 11, 0.35);">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <span style="font-size: 11px; font-weight: 900; letter-spacing: 2px; color: #fcd34d; text-transform: uppercase;">SHYNE CHRITAL</span>
+                    <h2 id="auth-title" style="font-size: 26px; font-weight: 900; color: #ffffff; margin-top: 4px;">Inscription VIP</h2>
+                    <p id="auth-subtitle" style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Activez vos mineurs haute performance sur Shyne Chrital</p>
+                </div>
+
+                <div class="card" style="border-color: var(--border-gold);">
+                    <div>
+                        <label for="phone">Numéro de téléphone</label>
+                        <input type="tel" id="phone" placeholder="Ex: 70000000" class="input-field" oninput="window.validatePhoneInput(this)">
+                        <p id="phone-error" class="error-msg">Veuillez entrer un numéro valide (min 8 chiffres).</p>
+                    </div>
+                    <div>
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" placeholder="Mot de passe (min 6 car.)" class="input-field">
+                        <p id="pass-error" class="error-msg">Le mot de passe doit contenir au moins 6 caractères.</p>
+                    </div>
+                    <div id="invite-code-container">
+                        <label for="invite-input">Code d'invitation (Bonus 500 FCFA)</label>
+                        <input type="text" id="invite-input" placeholder="Ex: 7000123" class="input-field" style="font-family: monospace; font-weight: bold; color: #fcd34d;">
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 12px;">
+                        <input type="checkbox" id="remember-me" checked style="width: 16px; height: 16px; accent-color: #f59e0b; cursor: pointer;">
+                        <label for="remember-me" style="margin-top: 0; cursor: pointer; color: #cbd5e1; font-weight: 600;">Se souvenir de moi</label>
+                    </div>
+
+                    <button type="button" id="auth-submit-btn" onclick="window.handleAuthBtn()" class="btn-gold" style="margin-top: 18px; font-size: 14px;">
+                        Rejoindre Shyne Chrital (+500 FCFA)
+                    </button>
+                    
+                    <div style="text-align: center; margin-top: 16px;">
+                        <button type="button" onclick="window.toggleAuthMode()" style="background: none; border: none; color: #34d399; font-size: 12px; font-weight: 700; cursor: pointer;">
+                            <span id="toggle-auth-text">Déjà un compte ? Se connecter</span>
+                        </button>
+                    </div>
+
+                    <button type="button" onclick="window.downloadAppFile()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #cbd5e1; font-size: 12px; font-weight: 700; padding: 12px; border-radius: 14px; margin-top: 16px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-download" style="color: #fcd34d;"></i> Télécharger l'app Shyne Chrital
+                    </button>
+                </div>
+            </div>
+
+            <!-- ONGLET 1: ACCUEIL PREMIUM + MINEURS À ACHETER -->
+            <div id="tab-today" class="tab-content hidden">
+                <!-- HEADER TOP BAR -->
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 42px; height: 42px; border-radius: 14px; background: var(--gold-gradient); color: #06130e; font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-size: 11px; color: #fcd34d; font-weight: 900; letter-spacing: 0.9px;">SHYNE CHRITAL</span>
+                                <span class="pulse-dot"></span>
+                            </div>
+                            <p id="user-display-phone" style="font-size: 14px; font-weight: 800; color: #ffffff;">-</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <!-- Bouton Admin masqué par défaut, visible uniquement pour 06867254 -->
+                        <button type="button" id="btn-toggle-admin" onclick="window.toggleAdminMode()" title="Accès Administrateur" style="position: relative; width: 38px; height: 38px; border-radius: 12px; background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; display: none; align-items: center; justify-content: center; color: #fcd34d; cursor: pointer;">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span id="admin-notif-badge" class="hidden" style="position: absolute; top: -5px; right: -5px; background: #ef4444; color: white; font-size: 10px; font-weight: 900; min-width: 18px; height: 18px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; padding: 0 4px;">0</span>
+                        </button>
+                        <button type="button" onclick="window.downloadAppFile()" title="Télécharger l'App" style="width: 38px; height: 38px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #34d399; cursor: pointer;"><i class="fa-solid fa-download"></i></button>
+                        <button type="button" onclick="window.logoutUser()" title="Se déconnecter" style="width: 38px; height: 38px; border-radius: 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); display: flex; align-items: center; justify-content: center; color: #f87171; cursor: pointer;"><i class="fa-solid fa-power-off"></i></button>
+                    </div>
+                </div>
+
+                <!-- CARTE PORTEFEUILLE & PUISSANCE DE MINAGE -->
+                <div class="hero-wallet-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-size: 11px; color: #fcd34d; font-weight: 800; letter-spacing: 0.6px;"><i class="fa-solid fa-gem"></i> COFFRE SHYNE CHRITAL</span>
+                        <span id="active-plans-badge" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; font-size: 10px; padding: 4px 10px; border-radius: 9999px; font-weight: 800;">0 Mineurs actifs</span>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <p style="font-size: 11px; color: #94a3b8;">Solde disponible</p>
+                        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 2px;">
+                            <span id="user-balance" style="font-size: 36px; font-weight: 900; color: #ffffff; letter-spacing: -0.5px;">500</span>
+                            <span style="font-size: 14px; font-weight: 800; color: #fcd34d;">FCFA</span>
+                        </div>
+                    </div>
+
+                    <!-- MÉTRIQUES DE MINAGE EN DIRECT -->
+                    <div style="background: rgba(0, 0, 0, 0.35); border-radius: 16px; padding: 12px; margin-bottom: 16px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                        <div>
+                            <p style="font-size: 10px; color: #94a3b8; font-weight: 700;">PRODUCTION / 24H (+10%)</p>
+                            <p id="daily-earnings-display" style="font-size: 16px; font-weight: 900; color: #34d399; margin-top: 2px;">+0 FCFA / jour</p>
+                            <p id="daily-payout-time" style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">Crédit auto chaque 24h</p>
+                        </div>
+                        <div style="border-left: 1px solid rgba(255,255,255,0.08); padding-left: 10px; display: flex; flex-direction: column; justify-content: center;">
+                            <p style="font-size: 10px; color: #94a3b8; font-weight: 700;">HASHRATE TOTAL</p>
+                            <p id="total-hashrate-display" style="font-size: 15px; font-weight: 900; color: #fcd34d; margin-top: 2px;">0 TH/s</p>
+                            <p style="font-size: 9px; color: #34d399; margin-top: 2px;"><i class="fa-solid fa-circle-check"></i> Serveurs en ligne</p>
+                        </div>
+                    </div>
+
+                    <!-- BOUTONS RECHARGE & RETRAIT -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <button type="button" onclick="window.openModal('modal-recharge')" class="btn-gold" style="padding: 13px; font-size: 13px;"><i class="fa-solid fa-plus-circle"></i> Recharger</button>
+                        <button type="button" onclick="window.openModal('modal-retrait')" class="btn-glass" style="padding: 13px; font-size: 13px;"><i class="fa-solid fa-wallet" style="color: #34d399;"></i> Retrait</button>
+                    </div>
+                </div>
+
+                <!-- BOUTIQUE PREMIUM : MINEURS À ACHETER DIRECTEMENT SUR L'ACCUEIL -->
+                <div style="margin-bottom: 18px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div>
+                            <h3 style="font-size: 16px; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                                <i class="fa-solid fa-server" style="color: #f59e0b;"></i> Mineurs Shyne Chrital
+                            </h3>
+                            <p style="font-size: 11px; color: #94a3b8;">Achetez une machine et gagnez 10% chaque jour (90j)</p>
+                        </div>
+                        <span style="background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 999px;">ROI 10%/j</span>
+                    </div>
+
+                    <!-- FILTRES RAPIDES DES MINEURS -->
+                    <div class="filter-pills">
+                        <button type="button" class="pill-btn active" onclick="window.filterHomeMiners('all', this)">Tous les Mineurs (9)</button>
+                        <button type="button" class="pill-btn" onclick="window.filterHomeMiners('starter', this)">Starter (3K - 16K)</button>
+                        <button type="button" class="pill-btn" onclick="window.filterHomeMiners('pro', this)">Pro (32K - 128K)</button>
+                        <button type="button" class="pill-btn" onclick="window.filterHomeMiners('elite', this)">Élite VIP (256K+)</button>
+                    </div>
+
+                    <!-- LISTE DES MINEURS SUR L'ACCUEIL -->
+                    <div id="home-miners-list"></div>
+                </div>
+
+                <!-- ROUE DE LA CHANCE PREMIUM AVEC CHRONO 24H -->
+                <div style="background: linear-gradient(135deg, #0d2b1f 0%, #091c14 100%); border: 1px solid rgba(16, 185, 129, 0.35); color: white; border-radius: 24px; padding: 20px; margin-bottom: 16px; position: relative;">
+                    <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 9999px; font-weight: 800; text-transform: uppercase;">✨ Bonus Quotidien</span>
+                    <div style="margin: 10px 0;">
+                        <h3 style="font-size: 17px; font-weight: 900; color: #ffffff;">Roue Shyne Chrital</h3>
+                        <p id="wheel-status-msg" style="font-size: 11px; color: #34d399; font-weight: 700; margin-top: 3px;">Prêt à tourner !</p>
+                        <div style="margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 10px;">
+                            <i class="fa-regular fa-clock" style="color: #fcd34d; font-size: 12px;"></i>
+                            <span id="wheel-countdown" style="font-family: monospace; font-size: 13px; font-weight: bold; color: #fcd34d;">Disponible</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+                        <button id="btn-spin" type="button" onclick="window.spinWheel()" class="btn-dark" style="width: auto; padding: 10px 18px; font-size: 12px;">Tourner la roue</button>
+                        <div id="wheel" style="width: 54px; height: 54px; border-radius: 50%; border: 3px solid #f59e0b; background: radial-gradient(circle, #10b981, #064e3b); display: flex; align-items: center; justify-content: center; color: #fcd34d; font-size: 20px; box-shadow: 0 0 15px rgba(245,158,11,0.3);" class="wheel-spinning">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HISTORIQUE RÉCENT -->
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 14px; font-weight: 800; color: #ffffff;"><i class="fa-solid fa-clock-rotate-left" style="color: #fcd34d;"></i> Activité Récente</h3>
+                        <button type="button" onclick="window.switchTab('history')" style="background: none; border: none; color: #34d399; font-size: 11px; font-weight: 800; cursor: pointer;">Tout voir →</button>
+                    </div>
+                    <div id="history-preview-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 8px;">Aucune transaction enregistrée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ONGLET 2: MES MINEURS ACTIFS & CATALOGUE COMPLET -->
+            <div id="tab-actions" class="tab-content hidden">
+                <div class="card" style="border-color: var(--border-gold);">
+                    <h2 style="font-size: 17px; font-weight: 900; color: #ffffff; margin-bottom: 6px;"><i class="fa-solid fa-microchip" style="color: #f59e0b;"></i> Mes Mineurs & Ferme</h2>
+                    <p style="font-size: 12px; color: #94a3b8;">Suivez vos machines actives ci-dessous ou ajoutez de nouvelles unités de minage (10%/jour pendant 90 jours).</p>
+                </div>
+
+                <!-- LISTE DES MINEURS ACTIFS DE L'UTILISATEUR -->
+                <div id="my-active-miners-section" class="card">
+                    <h3 style="font-size: 14px; font-weight: 800; color: #34d399; margin-bottom: 10px;"><i class="fa-solid fa-bolt"></i> Mes Machines en Marche</h3>
+                    <div id="my-active-miners-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 10px;">Vous n'avez pas encore acheté de mineur.</p>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 14px; font-weight: 800; color: #fcd34d; margin: 16px 0 10px 4px;">Catalogue Complet Shyne Chrital</h3>
+                <div id="actions-list"></div>
+            </div>
+
+            <!-- ONGLET 3: RÉSEAU & PARRAINAGE COMPLET -->
+            <div id="tab-network" class="tab-content hidden">
+                <div class="card" style="border-color: var(--border-gold);">
+                    <h2 style="font-size: 12px; font-weight: 800; color: #fcd34d; text-transform: uppercase; margin-bottom: 8px;">Votre Code & Lien d'Invitation</h2>
+                    <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 14px; border: 1px dashed rgba(245, 158, 11, 0.4); margin-bottom: 12px; text-align: center;">
+                        <p style="font-size: 11px; color: #94a3b8;">Votre code unique :</p>
+                        <p id="user-ref-code" style="font-size: 22px; font-weight: 900; color: #fcd34d; font-family: monospace; margin-top: 2px;">----</p>
+                    </div>
+                    <button type="button" onclick="window.copyRefLink()" class="btn-gold" style="padding: 13px; font-size: 13px;"><i class="fa-solid fa-share-nodes"></i> Copier mon lien d'invitation</button>
+                </div>
+
+                <!-- STATISTIQUES DU PARRAINAGE -->
+                <div class="card">
+                    <h3 style="font-size: 14px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">Mes Statistiques d'Équipe</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+                        <div style="background: rgba(255,255,255,0.04); padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                            <p style="font-size: 10px; color: #94a3b8; font-weight: 800;">TOTAL INVITÉS</p>
+                            <p id="ref-total-count" style="font-size: 22px; font-weight: 900; color: #ffffff; margin-top: 4px;">0</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.04); padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                            <p style="font-size: 10px; color: #94a3b8; font-weight: 800;">GAINS PARRAINAGE</p>
+                            <p id="ref-total-earned" style="font-size: 18px; font-weight: 900; color: #34d399; margin-top: 4px;">0 FCFA</p>
+                        </div>
+                    </div>
+
+                    <h4 style="font-size: 12px; font-weight: 700; color: #a7f3d0; margin-bottom: 8px;">Membres inscrits avec votre code :</h4>
+                    <div id="referrals-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 10px;">Aucun filleul inscrit pour le moment.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">Programme d'Affiliation 3 Niveaux</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="background: rgba(16, 185, 129, 0.12); padding: 12px; border-radius: 14px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 800;">
+                                <span style="color: #ffffff;">Niveau 1 (Directs)</span>
+                                <span style="color: #34d399;">10% Commission</span>
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.04); padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+                                <span style="color: #cbd5e1;">Niveau 2 (Indirects)</span>
+                                <span style="color: #fcd34d;">3% Commission</span>
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.04); padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700;">
+                                <span style="color: #cbd5e1;">Niveau 3 (Équipe)</span>
+                                <span style="color: #fcd34d;">1% Commission</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ONGLET DÉDIÉ: HISTORIQUE COMPLET -->
+            <div id="tab-history" class="tab-content hidden">
+                <div class="card">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <h2 style="font-size: 16px; font-weight: 900; color: #ffffff;"><i class="fa-solid fa-list-check" style="color: #fcd34d;"></i> Historique Complet</h2>
+                        <button type="button" onclick="window.switchTab('today')" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #34d399; font-weight: 700; padding: 6px 12px; border-radius: 10px; font-size: 11px; cursor: pointer;">Retour</button>
+                    </div>
+                    <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">Toutes vos opérations de minage, gains quotidiens, recharges et retraits :</p>
+                    <div id="full-history-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 16px;">Aucune transaction enregistrée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANNEAU ADMINISTRATEUR -->
+            <div id="tab-admin" class="tab-content hidden">
+                <div class="card" style="background: linear-gradient(135deg, #132a1e, #091711); border-color: #f59e0b;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h2 style="font-size: 16px; font-weight: 900; color: #fcd34d;"><i class="fa-solid fa-shield-halved"></i> Admin Shyne Chrital</h2>
+                        <button type="button" onclick="window.exitAdminMode()" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer;">Quitter Admin</button>
+                    </div>
+                    <p style="font-size: 12px; color: #cbd5e1;">Validation des dépôts, retraits et gestion des comptes.</p>
+                </div>
+
+                <div class="card" style="border: 1.5px solid #10b981;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3 style="font-size: 14px; font-weight: 900; color: #ffffff;"><i class="fa-solid fa-bell" style="color: #ef4444;"></i> Notifications (<span id="admin-notif-count-text">0</span>)</h3>
+                        <button type="button" onclick="window.clearAdminNotifications()" style="background: rgba(255,255,255,0.08); border: none; color: #cbd5e1; font-size: 10px; font-weight: bold; padding: 5px 10px; border-radius: 8px; cursor: pointer;">Tout marquer lu</button>
+                    </div>
+                    <div id="admin-notifications-feed" style="max-height: 180px; overflow-y: auto;">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune nouvelle notification.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; font-weight: bold; color: #34d399; margin-bottom: 12px;"><i class="fa-solid fa-arrow-down-left"></i> Dépôts en attente</h3>
+                    <div id="admin-pending-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune demande de dépôt en attente.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 14px; font-weight: bold; color: #fcd34d; margin-bottom: 12px;"><i class="fa-solid fa-arrow-up-right"></i> Retraits en attente</h3>
+                    <div id="admin-withdraws-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune demande de retrait en attente.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 14px; font-weight: bold; color: #ffffff; margin-bottom: 12px;"><i class="fa-solid fa-users"></i> Utilisateurs & Parrainages</h3>
+                    <div id="admin-users-list">
+                        <p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucun compte enregistré.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- NAVIGATION BAR PREMIUM -->
+        <nav id="bottom-nav" class="hidden">
+            <button type="button" id="nav-today" class="active-nav" onclick="window.switchTab('today')">
+                <i class="fa-solid fa-house" style="font-size: 16px;"></i>
+                <span>Accueil</span>
+            </button>
+            <button type="button" id="nav-actions" onclick="window.switchTab('actions')">
+                <i class="fa-solid fa-microchip" style="font-size: 16px;"></i>
+                <span>Mes Mineurs</span>
+            </button>
+            <button type="button" id="nav-network" onclick="window.switchTab('network')">
+                <i class="fa-solid fa-users" style="font-size: 16px;"></i>
+                <span>Réseau</span>
+            </button>
+            <button type="button" id="nav-history" onclick="window.switchTab('history')">
+                <i class="fa-solid fa-receipt" style="font-size: 16px;"></i>
+                <span>Historique</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- MODALES -->
+    <div id="modal-admin-login" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="window.closeModal('modal-admin-login')">✕</button>
+            <h3 style="font-size: 18px; font-weight: 900; margin-bottom: 8px; color: #fcd34d;">Admin Shyne Chrital</h3>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">Veuillez saisir votre mot de passe ou code PIN :</p>
+            <input type="password" id="admin-password-input" class="input-field" placeholder="••••••••" autocomplete="off">
+            <button type="button" onclick="window.verifyAdminPassword()" class="btn-gold" style="margin-top: 12px;">Déverrouiller</button>
+        </div>
+    </div>
+
+    <div id="modal-admin-edit-balance" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="window.closeModal('modal-admin-edit-balance')">✕</button>
+            <h3 style="font-size: 18px; font-weight: 900; margin-bottom: 8px; color: #fcd34d;">Ajuster le Solde</h3>
+            <p id="admin-edit-phone-label" style="font-size: 12px; color: #34d399; margin-bottom: 12px; font-weight: bold;"></p>
+            <form onsubmit="window.saveAdminBalanceAdjustment(event); return false;">
+                <input type="hidden" id="admin-edit-target-phone">
+                <label>Montant (FCFA)</label>
+                <input type="number" id="admin-edit-amount" class="input-field" placeholder="Ex: 5000" required>
+                <label>Type d'ajustement</label>
+                <select id="admin-edit-type" class="input-field">
+                    <option value="set">Définir le solde exact</option>
+                    <option value="add">Ajouter au solde (+)</option>
+                    <option value="sub">Retirer du solde (-)</option>
+                </select>
+                <button type="submit" class="btn-gold" style="margin-top: 16px;">Appliquer la modification</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-recharge" class="modal-overlay hidden">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+            <button type="button" class="modal-close" onclick="window.closeModal('modal-recharge')">✕</button>
+            <h3 style="font-size: 18px; font-weight: 900; margin-bottom: 4px; color: #fcd34d;">Recharger mon compte</h3>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">Choisissez votre moyen de paiement (Android & iOS) :</p>
+            
+            <div class="pay-tabs">
+                <button type="button" id="tab-btn-om" class="pay-tab-btn active-om" onclick="window.selectPayMethod('om')">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Orange Money
+                </button>
+                <button type="button" id="tab-btn-wave" class="pay-tab-btn" onclick="window.selectPayMethod('wave')">
+                    <i class="fa-solid fa-water"></i> Wave
+                </button>
+            </div>
+
+            <label>Montant du dépôt (Min. 3 000 FCFA)</label>
+            <input type="number" id="recharge-amount" class="input-field" placeholder="Ex: 3000" min="3000" value="3000" oninput="window.updatePaymentInputs()">
+
+            <!-- SECTION ORANGE MONEY -->
+            <div id="pay-section-om">
+                <a id="btn-launch-ussd" href="tel:*144*10*56278765*3000%23" onclick="window.confirmRechargeSubmitted('Orange Money')" class="btn-green-action" style="margin-top: 10px; background: #ea580c;">
+                    <i class="fa-solid fa-phone"></i> Lancer le code USSD (Android)
+                </a>
+                
+                <div style="background: rgba(234, 88, 12, 0.12); border: 1px solid rgba(251, 146, 60, 0.35); border-radius: 14px; padding: 10px; margin-top: 10px;">
+                    <p style="font-size: 11px; font-weight: bold; color: #fdba74;"><i class="fa-brands fa-apple"></i> Utilisateur iPhone (iOS) ?</p>
+                    <p style="font-size: 11px; color: #fed7aa; margin-top: 2px;">Copiez le code ci-dessous et collez-le dans l'application <strong>Téléphone</strong> :</p>
+                    <div class="copy-box" style="border-color: #fb923c; color: #fdba74;">
+                        <span id="ios-ussd-code-display">*144*10*56278765*3000#</span>
+                        <button type="button" class="btn-copy-mini" style="background: #ea580c; color: white;" onclick="window.copyTextValue('ios-ussd-code-display', 'Code USSD copié ! Collez-le dans Téléphone sur iPhone.')">Copier</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION WAVE -->
+            <div id="pay-section-wave" class="hidden">
+                <div style="background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; padding: 12px; margin-top: 8px;">
+                    <p style="font-size: 11px; font-weight: bold; color: #7dd3fc;"><i class="fa-solid fa-paper-plane"></i> Transfert Wave (Android & iPhone)</p>
+                    <p style="font-size: 11px; color: #bae6fd; margin-top: 4px;">1. Copiez le numéro Wave officiel ci-dessous :</p>
+                    <div class="copy-box" style="border-color: #38bdf8; color: #7dd3fc;">
+                        <span id="wave-merchant-number">56278765</span>
+                        <button type="button" class="btn-copy-mini" style="background: #0284c7; color: white;" onclick="window.copyTextValue('wave-merchant-number', 'Numéro Wave copié ! Ouvrez Wave et envoyez le montant.')">Copier N°</button>
+                    </div>
+                    <p style="font-size: 11px; color: #bae6fd; margin-top: 8px;">2. Envoyez exactement <strong id="wave-amount-label" style="color: white;">3 000 FCFA</strong> à ce numéro.</p>
+                </div>
+                <button type="button" onclick="window.openWaveApp()" class="btn-wave" style="margin-top: 10px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir l'application Wave
+                </button>
+            </div>
+
+            <!-- CONFIRMATION & NOTIFICATION DIRECTE À L'ADMIN -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 14px; padding-top: 12px;">
+                <label>ID / Référence de la transaction (Optionnel)</label>
+                <input type="text" id="recharge-tx-ref" class="input-field" placeholder="Ex: MP261116... ou nom Wave" style="padding: 10px; font-size: 12px;">
+                <button type="button" onclick="window.submitAndNotifyAdmin()" class="btn-gold" style="margin-top: 8px; padding: 13px;">
+                    <i class="fa-solid fa-check-circle"></i> J'ai effectué le dépôt (Notifier l'Admin)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-retrait" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="window.closeModal('modal-retrait')">✕</button>
+            <h3 style="font-size: 18px; font-weight: 900; margin-bottom: 12px; color: #fcd34d;">Demande de Retrait</h3>
+            <form onsubmit="window.handleWithdraw(event); return false;">
+                <label>Moyen de réception</label>
+                <select id="withdraw-method" class="input-field">
+                    <option value="Orange Money">Orange Money</option>
+                    <option value="Wave">Wave</option>
+                </select>
+                <label>Numéro de réception</label>
+                <input type="tel" id="withdraw-phone-recipient" class="input-field" placeholder="Ex: 70000000" required oninput="window.validatePhoneInput(this)">
+                <label>Montant à retirer (FCFA)</label>
+                <input type="number" id="withdraw-amount" class="input-field" placeholder="Montant min: 1000 FCFA" min="1000" required>
+                <button type="submit" class="btn-gold" style="margin-top: 12px;">Confirmer et notifier l'Admin</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-action-confirm" class="modal-overlay hidden">
+        <div class="modal-content" style="text-align: center;">
+            <button type="button" class="modal-close" onclick="window.closeModal('modal-action-confirm')">✕</button>
+            <div style="width: 52px; height: 52px; background: rgba(16, 185, 129, 0.18); color: #34d399; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; font-size: 22px; border: 1px solid rgba(16, 185, 129, 0.4);">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="action-modal-title" style="font-size: 16px; font-weight: 900; color: #ffffff; margin-bottom: 8px;">Opération réussie</h3>
+            <p id="action-modal-desc" style="font-size: 13px; color: #cbd5e1; margin-bottom: 16px; line-height: 1.5;">Votre demande a été enregistrée.</p>
+            <button type="button" onclick="window.closeModal('modal-action-confirm')" class="btn-gold" style="padding: 12px;">D'accord</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT COMPLET FONCTIONNEL -->
+    <script>
+        const ADMIN_PHONE = "06867254";
+        const ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"; // admin123
+        const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+        let currentUser = null;
+        let isLoginMode = false;
+        let dailyCheckInterval = null;
+        let wheelTimerInterval = null;
+        let currentMinerFilter = 'all';
+
+        let pendingDeposits = JSON.parse(localStorage.getItem('shynechrital_pendingDeposits') || "[]");
+        let pendingWithdrawals = JSON.parse(localStorage.getItem('shynechrital_pendingWithdrawals') || "[]");
+
+        // CATALOGUE DES MINEURS PREMIUM
+        const minersData = [
+            { vip: "MINER S1", name: "Antminer Nano S1", hashrate: 15, price: 3000, tier: "starter", icon: "fa-microchip", accent: "#10b981" },
+            { vip: "MINER S2", name: "Avalon Core X2", hashrate: 42, price: 8000, tier: "starter", icon: "fa-server", accent: "#10b981" },
+            { vip: "MINER S3", name: "WhatsMiner M30", hashrate: 88, price: 16000, tier: "starter", icon: "fa-hard-drive", accent: "#34d399" },
+            { vip: "MINER PRO 4", name: "Antminer S19 Pro", hashrate: 180, price: 32000, tier: "pro", icon: "fa-memory", accent: "#38bdf8" },
+            { vip: "MINER PRO 5", name: "Bitmain Hydro V5", hashrate: 375, price: 64000, tier: "pro", icon: "fa-bolt", accent: "#38bdf8" },
+            { vip: "MINER PRO 6", name: "Quantum Rig X6", hashrate: 760, price: 128000, tier: "pro", icon: "fa-network-wired", accent: "#818cf8" },
+            { vip: "ELITE GOLD 7", name: "GoldCluster Rack 7", hashrate: 1550, price: 256000, tier: "elite", icon: "fa-gem", accent: "#f59e0b" },
+            { vip: "ELITE GOLD 8", name: "Titan Sovereign 8", hashrate: 3200, price: 512000, tier: "elite", icon: "fa-crown", accent: "#f59e0b" },
+            { vip: "ELITE GOLD 9", name: "Omega Vault 9", hashrate: 6800, price: 1024000, tier: "elite", icon: "fa-trophy", accent: "#fbbf24" }
+        ];
+
+        function getDeviceFingerprint() {
+            let deviceId = localStorage.getItem('shynechrital_device_id');
+            if (!deviceId) {
+                deviceId = 'DEV-' + Math.random().toString(36).substring(2, 11) + '-' + Date.now();
+                localStorage.setItem('shynechrital_device_id', deviceId);
+            }
+            return deviceId;
+        }
+
+        function checkDeviceSecurity() {
+            const currentDeviceId = getDeviceFingerprint();
+            const bannedDevices = JSON.parse(localStorage.getItem('shynechrital_banned_devices') || "[]");
+            if (bannedDevices.includes(currentDeviceId)) {
+                document.getElementById('device-banned-screen').classList.remove('hidden');
+                return false;
+            }
+            return true;
+        }
+
+        async function sha256(str) {
+            const buffer = new TextEncoder().encode(str);
+            const hash = await crypto.subtle.digest('SHA-256', buffer);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        window.downloadAppFile = function() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            if (isIOS) {
+                alert("Sur iPhone (Safari) : appuyez sur l'icône Partager en bas de l'écran, puis choisissez « Sur l'écran d'accueil » pour installer SHYNE CHRITAL.");
+                return;
+            }
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'SHYNE_CHRITAL.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        };
+
+        function addHistory(title, amountText, isPositive = true) {
+            if (!currentUser.history) currentUser.history = [];
+            const nowStr = new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+            currentUser.history.unshift({ title, amountText, isPositive, date: nowStr });
+            if (currentUser.history.length > 50) currentUser.history.pop();
+            saveUserData();
+        }
+
+        function checkDailyPayouts() {
+            if (!currentUser) return;
+            if (!currentUser.activePlans || currentUser.activePlans.length === 0) return;
+
+            const now = Date.now();
+            let totalCredited = 0;
+            let updated = false;
+
+            currentUser.activePlans.forEach(plan => {
+                if (typeof plan.daysPaid !== 'number') {
+                    plan.daysPaid = 0;
+                }
+                if (plan.daysPaid >= 90) return;
+
+                const elapsedDays = Math.min(90, Math.floor((now - plan.date) / MS_PER_DAY));
+                const unpaidDays = elapsedDays - plan.daysPaid;
+
+                if (unpaidDays >= 1) {
+                    const gain = (plan.price * 0.10) * unpaidDays;
+                    totalCredited += gain;
+                    plan.daysPaid += unpaidDays;
+                    updated = true;
+                    addHistory(`Minage quotidien ${plan.vip} (10% × ${unpaidDays}j)`, `+${gain.toLocaleString()} FCFA`, true);
+                }
+            });
+
+            if (updated) {
+                currentUser.balance += totalCredited;
+                saveUserData();
+                updateUI();
+            }
+        }
+
+        function startDailyCheckLoop() {
+            if (dailyCheckInterval) clearInterval(dailyCheckInterval);
+            dailyCheckInterval = setInterval(() => {
+                checkDailyPayouts();
+            }, 15000);
+        }
+
+        function updateWheelTimer() {
+            const btnSpin = document.getElementById('btn-spin');
+            const countdownEl = document.getElementById('wheel-countdown');
+            const statusMsgEl = document.getElementById('wheel-status-msg');
+            if (!currentUser || !btnSpin || !countdownEl) return;
+
+            const now = Date.now();
+            const lastSpin = currentUser.lastSpinTime || 0;
+            const nextSpinTime = lastSpin + MS_PER_DAY;
+            const remaining = nextSpinTime - now;
+
+            if (remaining <= 0) {
+                btnSpin.disabled = false;
+                btnSpin.innerText = "Tourner la roue";
+                countdownEl.innerText = "00:00:00 (Disponible)";
+                countdownEl.style.color = "#34d399";
+                if (statusMsgEl) statusMsgEl.innerText = "1 essai gratuit disponible !";
+            } else {
+                btnSpin.disabled = true;
+                btnSpin.innerText = "En attente...";
+                const hours = Math.floor(remaining / (1000 * 60 * 60));
+                const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+                countdownEl.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                countdownEl.style.color = "#fcd34d";
+                if (statusMsgEl) statusMsgEl.innerText = "Déjà tournée ! Revenez à la fin du chrono.";
+            }
+        }
+
+        function startWheelTimerLoop() {
+            if (wheelTimerInterval) clearInterval(wheelTimerInterval);
+            updateWheelTimer();
+            wheelTimerInterval = setInterval(updateWheelTimer, 1000);
+        }
+
+        function saveUserData() {
+            if (!currentUser) return;
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            users[currentUser.phone] = currentUser;
+            localStorage.setItem('shynechrital_users', JSON.stringify(users));
+            localStorage.setItem('shynechrital_current_user', JSON.stringify(currentUser));
+        }
+
+        function updateUI() {
+            if (!currentUser) return;
+            const balanceEl = document.getElementById('user-balance');
+            if (balanceEl) balanceEl.innerText = Math.floor(currentUser.balance).toLocaleString();
+
+            const displayPhone = document.getElementById('user-display-phone');
+            if (displayPhone) displayPhone.innerText = currentUser.phone;
+
+            const activePlansBadge = document.getElementById('active-plans-badge');
+            const planCount = currentUser.activePlans ? currentUser.activePlans.length : 0;
+            if (activePlansBadge) activePlansBadge.innerText = planCount + " Mineur" + (planCount > 1 ? "s" : "") + " actif" + (planCount > 1 ? "s" : "");
+
+            let totalDailyGain = 0;
+            let totalHashrate = 0;
+            if (currentUser.activePlans) {
+                currentUser.activePlans.forEach(p => {
+                    totalDailyGain += p.price * 0.10;
+                    const foundMiner = minersData.find(m => m.vip === p.vip || m.price === p.price);
+                    totalHashrate += foundMiner ? foundMiner.hashrate : Math.round(p.price / 200);
+                });
+            }
+
+            const dailyDisplayEl = document.getElementById('daily-earnings-display');
+            if (dailyDisplayEl) dailyDisplayEl.innerText = "+" + totalDailyGain.toLocaleString() + " FCFA / jour";
+
+            const hashDisplayEl = document.getElementById('total-hashrate-display');
+            if (hashDisplayEl) hashDisplayEl.innerText = totalHashrate.toLocaleString() + " TH/s";
+
+            const payoutTimeEl = document.getElementById('daily-payout-time');
+            if (payoutTimeEl) {
+                const activeOnes = (currentUser.activePlans || []).filter(p => (p.daysPaid || 0) < 90);
+                if (activeOnes.length > 0) {
+                    const nextPayouts = activeOnes.map(p => {
+                        const nextTs = p.date + (((p.daysPaid || 0) + 1) * MS_PER_DAY);
+                        return new Date(nextTs).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                    });
+                    const uniqueTimes = [...new Set(nextPayouts)];
+                    payoutTimeEl.innerText = `Versement auto : ${uniqueTimes.slice(0, 2).join(', ')}`;
+                } else {
+                    payoutTimeEl.innerText = `Crédité chaque jour 24h après l'achat`;
+                }
+            }
+
+            const refCodeEl = document.getElementById('user-ref-code');
+            if (refCodeEl && currentUser.phone) {
+                refCodeEl.innerText = currentUser.phone;
+            }
+
+            renderHistoryLists();
+            renderMyActiveMiners();
+
+            const btnAdmin = document.getElementById('btn-toggle-admin');
+            if (btnAdmin) {
+                btnAdmin.style.display = (currentUser.phone === ADMIN_PHONE) ? 'flex' : 'none';
+                updateAdminNotificationBadge();
+            }
+
+            renderReferralsUI();
+        }
+
+        function createMinerCardHTML(miner) {
+            const dailyProfit = miner.price * 0.10;
+            const totalProfit = dailyProfit * 90;
+            const isElite = miner.tier === 'elite';
+            const ownedCount = (currentUser && currentUser.activePlans)
+                ? currentUser.activePlans.filter(p => p.vip === miner.vip || p.price === miner.price).length
+                : 0;
+
+            return `
+                <div class="miner-card ${isElite ? 'vip-gold' : ''}">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="miner-icon-box" style="background: rgba(255,255,255,0.05); border: 1px solid ${miner.accent}55; color: ${miner.accent};">
+                                <i class="fa-solid ${miner.icon}"></i>
+                            </div>
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span class="miner-badge" style="background: ${miner.accent}22; color: ${miner.accent}; border: 1px solid ${miner.accent}44;">${miner.vip}</span>
+                                    ${ownedCount > 0 ? `<span style="background: #10b981; color: #06130e; font-size: 9px; font-weight: 900; padding: 2px 7px; border-radius: 999px;">Actif ×${ownedCount}</span>` : ''}
+                                </div>
+                                <h4 style="font-size: 15px; font-weight: 800; color: #ffffff; margin-top: 4px;">${miner.name}</h4>
+                                <p style="font-size: 11px; color: #94a3b8;"><i class="fa-solid fa-gauge-high" style="color: ${miner.accent};"></i> Puissance : <strong style="color: #e2e8f0;">${miner.hashrate} TH/s</strong> · Cycle 90j</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 10px; color: #94a3b8; font-weight: 700;">PRIX</p>
+                            <p style="font-size: 16px; font-weight: 900; color: ${isElite ? '#fcd34d' : '#ffffff'};">${miner.price.toLocaleString()}</p>
+                            <p style="font-size: 10px; font-weight: 800; color: #fcd34d;">FCFA</p>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(0, 0, 0, 0.35); border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div>
+                            <p style="font-size: 10px; color: #94a3b8;">Gain quotidien (10%)</p>
+                            <p style="font-size: 13px; font-weight: 900; color: #34d399;">+${dailyProfit.toLocaleString()} FCFA</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 10px; color: #94a3b8;">Revenu total (90j)</p>
+                            <p style="font-size: 13px; font-weight: 900; color: #fcd34d;">${totalProfit.toLocaleString()} FCFA</p>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="window.buyAction('${miner.vip}', ${miner.price}, '${miner.name}')" class="${isElite ? 'btn-gold' : 'btn-dark'}" style="padding: 12px; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-cart-shopping"></i> Acheter ce mineur (${miner.price.toLocaleString()} FCFA)
+                    </button>
+                </div>
+            `;
+        }
+
+        window.filterHomeMiners = function(tier, btnEl) {
+            currentMinerFilter = tier;
+            document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            renderHomeMinersList();
+        };
+
+        function renderHomeMinersList() {
+            const homeListEl = document.getElementById('home-miners-list');
+            if (!homeListEl) return;
+            const filtered = currentMinerFilter === 'all'
+                ? minersData
+                : minersData.filter(m => m.tier === currentMinerFilter);
+            homeListEl.innerHTML = filtered.map(m => createMinerCardHTML(m)).join('');
+        }
+
+        function renderActionsList() {
+            const listEl = document.getElementById('actions-list');
+            if (!listEl) return;
+            listEl.innerHTML = minersData.map(m => createMinerCardHTML(m)).join('');
+        }
+
+        function renderMyActiveMiners() {
+            const container = document.getElementById('my-active-miners-list');
+            if (!container || !currentUser) return;
+            const plans = currentUser.activePlans || [];
+            if (plans.length === 0) {
+                container.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 10px;">Vous n\'avez pas encore acheté de mineur.</p>';
+                return;
+            }
+            container.innerHTML = plans.map(p => {
+                const daysPaid = p.daysPaid || 0;
+                const dailyGain = p.price * 0.10;
+                const buyDate = new Date(p.date).toLocaleDateString('fr-FR');
+                return `
+                    <div class="tx-item">
+                        <div>
+                            <p style="font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                                <span class="pulse-dot"></span> ${p.vip} (${p.price.toLocaleString()} FCFA)
+                            </p>
+                            <p style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Acheté le ${buyDate} · Progression : ${daysPaid}/90 jours</p>
+                        </div>
+                        <span style="font-weight: 900; color: #34d399;">+${dailyGain.toLocaleString()} F/j</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderHistoryLists() {
+            const history = currentUser.history || [];
+            const previewEl = document.getElementById('history-preview-list');
+            if (previewEl) {
+                if (history.length > 0) {
+                    previewEl.innerHTML = history.slice(0, 3).map(item => `
+                        <div class="tx-item">
+                            <div>
+                                <p style="font-weight: 700; color: #f8fafc;">${item.title}</p>
+                                <p style="font-size: 10px; color: #94a3b8;">${item.date}</p>
+                            </div>
+                            <span style="font-weight: 900; color: ${item.isPositive ? '#34d399' : '#f87171'};">${item.amountText}</span>
+                        </div>
+                    `).join('');
+                } else {
+                    previewEl.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 8px;">Aucune transaction enregistrée.</p>';
+                }
+            }
+
+            const fullEl = document.getElementById('full-history-list');
+            if (fullEl) {
+                if (history.length > 0) {
+                    fullEl.innerHTML = history.map(item => `
+                        <div class="tx-item">
+                            <div>
+                                <p style="font-weight: 700; color: #f8fafc; font-size: 13px;">${item.title}</p>
+                                <p style="font-size: 11px; color: #94a3b8;">${item.date}</p>
+                            </div>
+                            <span style="font-weight: 900; font-size: 13px; color: ${item.isPositive ? '#34d399' : '#f87171'};">${item.amountText}</span>
+                        </div>
+                    `).join('');
+                } else {
+                    fullEl.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 16px;">Aucune transaction enregistrée.</p>';
+                }
+            }
+        }
+
+        function renderReferralsUI() {
+            if (!currentUser) return;
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            const allUsersList = Object.values(users);
+            const myDirectReferrals = allUsersList.filter(u => u.referredBy === currentUser.phone);
+
+            const countEl = document.getElementById('ref-total-count');
+            if (countEl) countEl.innerText = myDirectReferrals.length;
+
+            const earnedEl = document.getElementById('ref-total-earned');
+            if (earnedEl) earnedEl.innerText = (currentUser.referralEarnings || 0).toLocaleString() + " FCFA";
+
+            const listEl = document.getElementById('referrals-list');
+            if (!listEl) return;
+
+            if (myDirectReferrals.length === 0) {
+                listEl.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center; padding: 10px;">Aucun filleul inscrit pour le moment.</p>';
+            } else {
+                listEl.innerHTML = myDirectReferrals.map(refUser => {
+                    const regDate = refUser.registeredAt ? new Date(refUser.registeredAt).toLocaleDateString('fr-FR') : 'Récemment';
+                    const investedTotal = (refUser.activePlans || []).reduce((sum, p) => sum + p.price, 0);
+                    return `
+                        <div class="tx-item">
+                            <div>
+                                <p style="font-weight: 700; color: #ffffff;"><i class="fa-solid fa-user-check" style="color: #34d399;"></i> ${refUser.phone}</p>
+                                <p style="font-size: 10px; color: #94a3b8;">Inscrit le ${regDate} · Mineurs : ${investedTotal.toLocaleString()} FCFA</p>
+                            </div>
+                            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: bold;">Actif</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        window.toggleAuthMode = function() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('auth-title').innerText = isLoginMode ? "Connexion VIP" : "Inscription VIP";
+            document.getElementById('auth-subtitle').innerText = isLoginMode ? "Accédez à vos mineurs sur Shyne Chrital" : "Activez vos mineurs haute performance sur Shyne Chrital";
+            document.getElementById('auth-submit-btn').innerText = isLoginMode ? "Se connecter" : "Rejoindre Shyne Chrital (+500 FCFA)";
+            document.getElementById('toggle-auth-text').innerText = isLoginMode ? "Pas encore de compte ? S'inscrire" : "Déjà un compte ? Se connecter";
+            
+            const inviteCont = document.getElementById('invite-code-container');
+            if (inviteCont) inviteCont.style.display = isLoginMode ? 'none' : 'block';
+        };
+
+        window.validatePhoneInput = function(input) {
+            input.value = input.value.replace(/\D/g, '');
+        };
+
+        window.handleAuthBtn = function() {
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const inviteCode = document.getElementById('invite-input').value.trim();
+            const rememberMe = document.getElementById('remember-me').checked;
+
+            if (phone.length < 8) {
+                document.getElementById('phone-error').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('phone-error').style.display = 'none';
+            }
+
+            if (password.length < 6) {
+                alert("Le mot de passe doit contenir au moins 6 caractères.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+
+            if (isLoginMode) {
+                if (!users[phone] || users[phone].password !== password) {
+                    alert("Numéro ou mot de passe incorrect.");
+                    return;
+                }
+                currentUser = users[phone];
+            } else {
+                if (users[phone]) {
+                    alert("Ce numéro est déjà enregistré. Veuillez vous connecter.");
+                    return;
+                }
+
+                const now = Date.now();
+                let validReferrer = null;
+                if (inviteCode && users[inviteCode] && inviteCode !== phone) {
+                    validReferrer = inviteCode;
+                }
+
+                currentUser = {
+                    phone: phone,
+                    password: password,
+                    balance: 500,
+                    activePlans: [],
+                    registeredAt: now,
+                    lastDailyPayout: now,
+                    lastSpinTime: 0,
+                    referredBy: validReferrer,
+                    referralEarnings: 0,
+                    history: [
+                        { title: "Bonus de bienvenue Shyne Chrital", amountText: "+500 FCFA", isPositive: true, date: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}) }
+                    ]
+                };
+
+                if (validReferrer && users[validReferrer]) {
+                    users[validReferrer].balance += 200;
+                    users[validReferrer].referralEarnings = (users[validReferrer].referralEarnings || 0) + 200;
+                    if (!users[validReferrer].history) users[validReferrer].history = [];
+                    users[validReferrer].history.unshift({
+                        title: `Bonus parrainage (${phone})`,
+                        amountText: "+200 FCFA",
+                        isPositive: true,
+                        date: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})
+                    });
+                }
+
+                users[phone] = currentUser;
+                localStorage.setItem('shynechrital_users', JSON.stringify(users));
+            }
+
+            if (rememberMe) {
+                localStorage.setItem('shynechrital_current_user', JSON.stringify(currentUser));
+            }
+
+            checkDailyPayouts();
+            
+            document.getElementById('tab-register').classList.add('hidden');
+            document.getElementById('tab-today').classList.remove('hidden');
+            document.getElementById('bottom-nav').classList.remove('hidden');
+
+            updateUI();
+            renderHomeMinersList();
+            renderActionsList();
+            startDailyCheckLoop();
+            startWheelTimerLoop();
+        };
+
+        window.logoutUser = function() {
+            if (dailyCheckInterval) clearInterval(dailyCheckInterval);
+            if (wheelTimerInterval) clearInterval(wheelTimerInterval);
+            currentUser = null;
+            localStorage.removeItem('shynechrital_current_user');
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-register').classList.remove('hidden');
+            document.getElementById('bottom-nav').classList.add('hidden');
+        };
+
+        window.switchTab = function(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-nav'));
+            const navBtn = document.getElementById('nav-' + tabId);
+            if (navBtn) navBtn.classList.add('active-nav');
+
+            if (tabId === 'today') renderHomeMinersList();
+            if (tabId === 'actions') {
+                renderMyActiveMiners();
+                renderActionsList();
+            }
+            if (tabId === 'network') renderReferralsUI();
+            if (tabId === 'history') renderHistoryLists();
+        };
+
+        window.openModal = function(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        };
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        };
+
+        window.toggleAdminMode = function() {
+            if (!currentUser || currentUser.phone !== ADMIN_PHONE) return;
+            const passInput = document.getElementById('admin-password-input');
+            if (passInput) passInput.value = '';
+            window.openModal('modal-admin-login');
+        };
+
+        window.verifyAdminPassword = async function() {
+            if (!currentUser || currentUser.phone !== ADMIN_PHONE) {
+                alert("Accès refusé.");
+                window.closeModal('modal-admin-login');
+                return;
+            }
+
+            const input = document.getElementById('admin-password-input').value;
+            const hashed = await sha256(input);
+            
+            if (hashed === ADMIN_PASSWORD_HASH) {
+                window.closeModal('modal-admin-login');
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+                document.getElementById('tab-admin').classList.remove('hidden');
+                document.getElementById('bottom-nav').classList.add('hidden');
+                renderAdminDashboard();
+            } else {
+                alert("Mot de passe ou code PIN incorrect.");
+            }
+        };
+
+        window.exitAdminMode = function() {
+            document.getElementById('tab-admin').classList.add('hidden');
+            document.getElementById('tab-today').classList.remove('hidden');
+            document.getElementById('bottom-nav').classList.remove('hidden');
+            updateUI();
+        };
+
+        let selectedPayMethod = "Orange Money";
+        const FIREBASE_DB_URL = ""; 
+
+        let adminNotifications = JSON.parse(localStorage.getItem('shynechrital_admin_notifications') || "[]");
+        let lastKnownNotifCount = adminNotifications.filter(n => !n.read).length;
+
+        function playAdminAlertSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(880, ctx.currentTime);
+                osc.frequency.setValueAtTime(1100, ctx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.25, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.35);
+            } catch (e) {}
+        }
+
+        function showAdminLiveToast(title, msg) {
+            if (!currentUser || currentUser.phone !== ADMIN_PHONE) return;
+            const toast = document.getElementById('admin-live-toast');
+            if (!toast) return;
+            document.getElementById('admin-toast-title').innerText = title;
+            document.getElementById('admin-toast-msg').innerText = msg;
+            toast.classList.remove('hidden');
+            playAdminAlertSound();
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 8000);
+        }
+
+        function pushOnSiteAdminNotification(type, title, details, payload) {
+            const notifObj = {
+                id: 'NOTIF-' + Date.now() + '-' + Math.random().toString(36).substring(2, 6),
+                type: type,
+                title: title,
+                details: details,
+                time: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}),
+                read: false
+            };
+            adminNotifications.unshift(notifObj);
+            if (adminNotifications.length > 50) adminNotifications.pop();
+            localStorage.setItem('shynechrital_admin_notifications', JSON.stringify(adminNotifications));
+
+            if (FIREBASE_DB_URL) {
+                const cleanUrl = FIREBASE_DB_URL.endsWith('/') ? FIREBASE_DB_URL.slice(0, -1) : FIREBASE_DB_URL;
+                fetch(`${cleanUrl}/notifications.json`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(notifObj)
+                }).catch(() => {});
+
+                if (type === 'deposit' && payload) {
+                    fetch(`${cleanUrl}/pendingDeposits.json`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    }).catch(() => {});
+                } else if (type === 'withdraw' && payload) {
+                    fetch(`${cleanUrl}/pendingWithdrawals.json`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    }).catch(() => {});
+                }
+            }
+
+            updateAdminNotificationBadge();
+            if (currentUser && currentUser.phone === ADMIN_PHONE) {
+                showAdminLiveToast(title, details);
+                if (!document.getElementById('tab-admin').classList.contains('hidden')) {
+                    renderAdminDashboard();
+                }
+            }
+        }
+
+        function updateAdminNotificationBadge() {
+            const unreadCount = adminNotifications.filter(n => !n.read).length;
+            const badge = document.getElementById('admin-notif-badge');
+            if (badge) {
+                if (unreadCount > 0) {
+                    badge.innerText = unreadCount;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+            const countText = document.getElementById('admin-notif-count-text');
+            if (countText) countText.innerText = unreadCount;
+        }
+
+        window.clearAdminNotifications = function() {
+            adminNotifications = adminNotifications.map(n => ({ ...n, read: true }));
+            localStorage.setItem('shynechrital_admin_notifications', JSON.stringify(adminNotifications));
+            lastKnownNotifCount = 0;
+            updateAdminNotificationBadge();
+            renderAdminDashboard();
+        };
+
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'shynechrital_admin_notifications' || e.key === 'shynechrital_pendingDeposits' || e.key === 'shynechrital_pendingWithdrawals') {
+                adminNotifications = JSON.parse(localStorage.getItem('shynechrital_admin_notifications') || "[]");
+                pendingDeposits = JSON.parse(localStorage.getItem('shynechrital_pendingDeposits') || "[]");
+                pendingWithdrawals = JSON.parse(localStorage.getItem('shynechrital_pendingWithdrawals') || "[]");
+
+                const unread = adminNotifications.filter(n => !n.read);
+                if (unread.length > lastKnownNotifCount && unread.length > 0) {
+                    showAdminLiveToast(unread[0].title, unread[0].details);
+                }
+                lastKnownNotifCount = unread.length;
+                updateAdminNotificationBadge();
+                if (currentUser && currentUser.phone === ADMIN_PHONE && !document.getElementById('tab-admin').classList.contains('hidden')) {
+                    renderAdminDashboard();
+                }
+            }
+        });
+
+        window.selectPayMethod = function(method) {
+            const omBtn = document.getElementById('tab-btn-om');
+            const waveBtn = document.getElementById('tab-btn-wave');
+            const omSec = document.getElementById('pay-section-om');
+            const waveSec = document.getElementById('pay-section-wave');
+
+            if (method === 'wave') {
+                selectedPayMethod = "Wave";
+                omBtn.classList.remove('active-om');
+                waveBtn.classList.add('active-wave');
+                omSec.classList.add('hidden');
+                waveSec.classList.remove('hidden');
+            } else {
+                selectedPayMethod = "Orange Money";
+                waveBtn.classList.remove('active-wave');
+                omBtn.classList.add('active-om');
+                waveSec.classList.add('hidden');
+                omSec.classList.remove('hidden');
+            }
+            window.updatePaymentInputs();
+        };
+
+        window.updatePaymentInputs = function() {
+            const input = document.getElementById('recharge-amount');
+            const val = Math.max(3000, parseInt(input.value) || 3000);
+            const ussdLink = document.getElementById('btn-launch-ussd');
+            if (ussdLink) {
+                ussdLink.href = `tel:*144*10*56278765*${val}%23`;
+            }
+            const iosCodeEl = document.getElementById('ios-ussd-code-display');
+            if (iosCodeEl) {
+                iosCodeEl.innerText = `*144*10*56278765*${val}#`;
+            }
+            const waveLabel = document.getElementById('wave-amount-label');
+            if (waveLabel) {
+                waveLabel.innerText = `${val.toLocaleString()} FCFA`;
+            }
+        };
+
+        window.copyTextValue = function(elementId, successMsg) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const textToCopy = el.innerText.trim();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    alert(successMsg);
+                }).catch(() => {
+                    prompt("Copiez ce texte :", textToCopy);
+                });
+            } else {
+                const tempInput = document.createElement("input");
+                tempInput.value = textToCopy;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                alert(successMsg);
+            }
+        };
+
+        window.openWaveApp = function() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            window.location.href = "wave://";
+            setTimeout(() => {
+                if (isIOS) {
+                    alert("Ouvrez l'app Wave manuellement et envoyez le montant au 56278765, puis revenez ici confirmer.");
+                }
+            }, 1500);
+        };
+
+        window.confirmRechargeSubmitted = function(methodName) {
+            if (methodName) selectedPayMethod = methodName;
+        };
+
+        window.submitAndNotifyAdmin = function() {
+            const amount = parseInt(document.getElementById('recharge-amount').value) || 3000;
+            if (amount < 3000) {
+                alert("Le montant minimum de dépôt est de 3 000 FCFA.");
+                return;
+            }
+            const txRef = (document.getElementById('recharge-tx-ref').value || "").trim();
+            const nowStr = new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+
+            const depositPayload = {
+                phone: currentUser.phone,
+                amount: amount,
+                method: selectedPayMethod,
+                ref: txRef || "N/A",
+                time: nowStr
+            };
+            pendingDeposits.push(depositPayload);
+            localStorage.setItem('shynechrital_pendingDeposits', JSON.stringify(pendingDeposits));
+            addHistory(`Dépôt ${selectedPayMethod}`, `${amount.toLocaleString()} FCFA (En attente)`, true);
+
+            pushOnSiteAdminNotification(
+                'deposit',
+                `Nouveau dépôt ${selectedPayMethod}`,
+                `${currentUser.phone} a déposé ${amount.toLocaleString()} FCFA (Réf: ${txRef || 'N/A'})`,
+                depositPayload
+            );
+
+            document.getElementById('action-modal-title').innerText = `Dépôt ${selectedPayMethod} envoyé`;
+            document.getElementById('action-modal-desc').innerText = `Votre demande de recharge de ${amount.toLocaleString()} FCFA a été notifiée à l'administrateur Shyne Chrital. Votre solde sera crédité dès validation.`;
+
+            window.closeModal('modal-recharge');
+            window.openModal('modal-action-confirm');
+        };
+
+        window.handleWithdraw = function(event) {
+            event.preventDefault();
+            const method = document.getElementById('withdraw-method').value;
+            const amount = parseInt(document.getElementById('withdraw-amount').value);
+            const recipient = document.getElementById('withdraw-phone-recipient').value;
+
+            if (amount < 1000) {
+                alert("Le montant minimum de retrait est de 1000 FCFA.");
+                return;
+            }
+            if (currentUser.balance < amount) {
+                alert("Solde insuffisant pour ce retrait.");
+                return;
+            }
+
+            const nowStr = new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'});
+            currentUser.balance -= amount;
+            addHistory(`Retrait ${method} (${recipient})`, `-${amount.toLocaleString()} FCFA`, false);
+            updateUI();
+
+            const withdrawPayload = {
+                phone: currentUser.phone,
+                recipient: recipient,
+                method: method,
+                amount: amount,
+                time: nowStr
+            };
+            pendingWithdrawals.push(withdrawPayload);
+            localStorage.setItem('shynechrital_pendingWithdrawals', JSON.stringify(pendingWithdrawals));
+
+            pushOnSiteAdminNotification(
+                'withdraw',
+                `Demande de retrait (${method})`,
+                `${currentUser.phone} demande ${amount.toLocaleString()} FCFA vers ${recipient}`,
+                withdrawPayload
+            );
+
+            document.getElementById('action-modal-title').innerText = "Demande de retrait envoyée";
+            document.getElementById('action-modal-desc').innerText = `Votre demande de retrait de ${amount.toLocaleString()} FCFA via ${method} a été transmise à l'administrateur Shyne Chrital.`;
+
+            window.closeModal('modal-retrait');
+            window.openModal('modal-action-confirm');
+        };
+
+        window.buyAction = function(vipName, price, minerName) {
+            if (currentUser.balance < price) {
+                alert(`Solde insuffisant (${Math.floor(currentUser.balance).toLocaleString()} FCFA) pour acheter ${minerName || vipName} (${price.toLocaleString()} FCFA). Veuillez recharger votre compte.`);
+                window.openModal('modal-recharge');
+                return;
+            }
+            currentUser.balance -= price;
+            if (!currentUser.activePlans) currentUser.activePlans = [];
+            const purchaseTime = Date.now();
+            currentUser.activePlans.push({ vip: vipName, price: price, date: purchaseTime, daysPaid: 0 });
+            addHistory(`Achat mineur ${minerName || vipName}`, `-${price.toLocaleString()} FCFA`, false);
+
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            const levels = [
+                { rate: 0.10, label: "Niveau 1 (10%)" },
+                { rate: 0.03, label: "Niveau 2 (3%)" },
+                { rate: 0.01, label: "Niveau 3 (1%)" }
+            ];
+
+            let refPhone = currentUser.referredBy;
+            for (let i = 0; i < levels.length; i++) {
+                if (refPhone && users[refPhone]) {
+                    const comm = Math.floor(price * levels[i].rate);
+                    if (comm > 0) {
+                        users[refPhone].balance += comm;
+                        users[refPhone].referralEarnings = (users[refPhone].referralEarnings || 0) + comm;
+                        if (!users[refPhone].history) users[refPhone].history = [];
+                        users[refPhone].history.unshift({
+                            title: `Commission ${levels[i].label} - ${currentUser.phone}`,
+                            amountText: `+${comm.toLocaleString()} FCFA`,
+                            isPositive: true,
+                            date: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})
+                        });
+                    }
+                    refPhone = users[refPhone].referredBy;
+                } else {
+                    break;
+                }
+            }
+            localStorage.setItem('shynechrital_users', JSON.stringify(users));
+
+            updateUI();
+            renderHomeMinersList();
+            renderActionsList();
+
+            const buyDate = new Date(purchaseTime);
+            document.getElementById('action-modal-title').innerText = `${minerName || vipName} activé !`;
+            document.getElementById('action-modal-desc').innerText = `Votre mineur Shyne Chrital est maintenant en ligne. Vous recevrez automatiquement +${(price * 0.10).toLocaleString()} FCFA chaque jour dès demain à ${buyDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}.`;
+            window.openModal('modal-action-confirm');
+        };
+
+        window.spinWheel = function() {
+            const now = Date.now();
+            if (currentUser.lastSpinTime && (now - currentUser.lastSpinTime) < MS_PER_DAY) {
+                alert("Vous avez déjà tourné la roue. Attendez la fin du chronomètre de 24h.");
+                return;
+            }
+
+            const btnSpin = document.getElementById('btn-spin');
+            btnSpin.disabled = true;
+
+            const wheel = document.getElementById('wheel');
+            wheel.style.transform = "rotate(1440deg)";
+
+            currentUser.lastSpinTime = now;
+            saveUserData();
+
+            setTimeout(() => {
+                const rewards = [50, 100, 150, 200, 500];
+                const winAmount = rewards[Math.floor(Math.random() * rewards.length)];
+
+                currentUser.balance += winAmount;
+                addHistory("Gain Roue Shyne Chrital", `+${winAmount} FCFA`, true);
+                updateUI();
+                updateWheelTimer();
+
+                wheel.style.transition = "none";
+                wheel.style.transform = "rotate(0deg)";
+                setTimeout(() => { wheel.style.transition = "transform 4s cubic-bezier(0.15, 0.99, 0.18, 1)"; }, 50);
+
+                alert(`Félicitations ! Vous avez gagné ${winAmount} FCFA sur Shyne Chrital ! Prochain essai dans 24h.`);
+            }, 4000);
+        };
+
+        window.copyRefLink = function() {
+            const baseUrl = window.location.href.split('?')[0];
+            const shareLink = `${baseUrl}?ref=${currentUser.phone}`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareLink).then(() => {
+                    alert("Lien d'invitation Shyne Chrital copié :\n" + shareLink);
+                });
+            } else {
+                prompt("Copiez votre lien d'invitation :", shareLink);
+            }
+        };
+
+        function checkUrlReferralParam() {
+            const params = new URLSearchParams(window.location.search);
+            const refParam = params.get('ref');
+            if (refParam) {
+                const inviteInput = document.getElementById('invite-input');
+                if (inviteInput) {
+                    inviteInput.value = refParam;
+                }
+            }
+        }
+
+        function renderAdminDashboard() {
+            const notifFeed = document.getElementById('admin-notifications-feed');
+            if (notifFeed) {
+                if (adminNotifications.length > 0) {
+                    notifFeed.innerHTML = adminNotifications.map(n => `
+                        <div class="tx-item" style="background: ${n.read ? 'transparent' : 'rgba(16, 185, 129, 0.12)'}; padding: 10px 8px; border-radius: 10px;">
+                            <div>
+                                <p style="font-weight: bold; color: #ffffff;">
+                                    ${!n.read ? '<span style="display:inline-block;width:8px;height:8px;background:#ef4444;border-radius:50%;margin-right:5px;"></span>' : ''}
+                                    ${n.title}
+                                </p>
+                                <p style="font-size: 11px; color: #34d399; margin-top: 2px;">${n.details}</p>
+                                <p style="font-size: 9px; color: #94a3b8; margin-top: 2px;">${n.time}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    notifFeed.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune nouvelle notification.</p>';
+                }
+            }
+            updateAdminNotificationBadge();
+
+            const pendingList = document.getElementById('admin-pending-list');
+            if (pendingDeposits.length > 0) {
+                pendingList.innerHTML = pendingDeposits.map(d => `<div class="tx-item"><div><p><strong>${d.phone}</strong> · <span style="color:#34d399;">${d.method || 'Orange Money'}</span></p><p style="font-size:10px; color:#94a3b8;">Montant: <strong style="color:white;">${d.amount.toLocaleString()} FCFA</strong> · Réf: ${d.ref || 'N/A'} (${d.time || ''})</p></div><button class="btn-green" onclick="window.approveDeposit('${d.phone}', ${d.amount})">Valider</button></div>`).join('');
+            } else {
+                pendingList.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune demande de dépôt en attente.</p>';
+            }
+
+            const withdrawList = document.getElementById('admin-withdraws-list');
+            if (pendingWithdrawals.length > 0) {
+                withdrawList.innerHTML = pendingWithdrawals.map(w => `<div class="tx-item"><div><p><strong>${w.phone}</strong> → ${w.recipient} (${w.method || 'OM'})</p><p style="font-size:10px; color:#94a3b8;">Montant: <strong style="color:white;">${w.amount.toLocaleString()} FCFA</strong> (${w.time || ''})</p></div><button class="btn-green" onclick="window.approveWithdraw('${w.phone}', ${w.amount})">Valider</button></div>`).join('');
+            } else {
+                withdrawList.innerHTML = '<p style="font-size: 11px; color: #94a3b8; text-align: center;">Aucune demande de retrait en attente.</p>';
+            }
+
+            const usersList = document.getElementById('admin-users-list');
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            const userKeys = Object.keys(users);
+            if (userKeys.length > 0) {
+                usersList.innerHTML = userKeys.map(k => {
+                    const u = users[k];
+                    const refCount = Object.values(users).filter(x => x.referredBy === u.phone).length;
+                    const parrainTxt = u.referredBy ? `Parrain: ${u.referredBy}` : 'Sans parrain';
+                    return `<div class="tx-item">
+                        <div>
+                            <p><strong>${u.phone}</strong> (<span style="color:#fcd34d;">${Math.floor(u.balance).toLocaleString()} FCFA</span>)</p>
+                            <p style="font-size: 10px; color: #94a3b8;">${parrainTxt} · A invité : <strong style="color:white;">${refCount} pers.</strong></p>
+                        </div>
+                        <button class="btn-green" onclick="window.openEditBalanceModal('${u.phone}')">Solde</button>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        window.openEditBalanceModal = function(phone) {
+            document.getElementById('admin-edit-target-phone').value = phone;
+            document.getElementById('admin-edit-phone-label').innerText = "Utilisateur : " + phone;
+            window.openModal('modal-admin-edit-balance');
+        };
+
+        window.saveAdminBalanceAdjustment = function(event) {
+            event.preventDefault();
+            const phone = document.getElementById('admin-edit-target-phone').value;
+            const amount = parseFloat(document.getElementById('admin-edit-amount').value);
+            const type = document.getElementById('admin-edit-type').value;
+
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            if (users[phone]) {
+                if (type === 'set') users[phone].balance = amount;
+                if (type === 'add') users[phone].balance += amount;
+                if (type === 'sub') users[phone].balance = Math.max(0, users[phone].balance - amount);
+
+                if (!users[phone].history) users[phone].history = [];
+                users[phone].history.unshift({
+                    title: "Ajustement solde admin",
+                    amountText: `${type === 'sub' ? '-' : '+'}${amount.toLocaleString()} FCFA`,
+                    isPositive: type !== 'sub',
+                    date: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})
+                });
+
+                if (currentUser && currentUser.phone === phone) {
+                    currentUser = users[phone];
+                    updateUI();
+                }
+                localStorage.setItem('shynechrital_users', JSON.stringify(users));
+                renderAdminDashboard();
+                window.closeModal('modal-admin-edit-balance');
+                alert("Solde mis à jour !");
+            }
+        };
+
+        window.approveDeposit = function(phone, amount) {
+            let users = JSON.parse(localStorage.getItem('shynechrital_users') || "{}");
+            if (users[phone]) {
+                users[phone].balance += amount;
+                if (!users[phone].history) users[phone].history = [];
+                users[phone].history.unshift({
+                    title: "Recharge validée",
+                    amountText: `+${amount.toLocaleString()} FCFA`,
+                    isPositive: true,
+                    date: new Date().toLocaleDateString('fr-FR') + ' ' + new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})
+                });
+                if (currentUser && currentUser.phone === phone) {
+                    currentUser = users[phone];
+                    updateUI();
+                }
+                localStorage.setItem('shynechrital_users', JSON.stringify(users));
+            }
+            pendingDeposits = pendingDeposits.filter(d => !(d.phone === phone && d.amount === amount));
+            localStorage.setItem('shynechrital_pendingDeposits', JSON.stringify(pendingDeposits));
+            renderAdminDashboard();
+            alert("Dépôt validé !");
+        };
+
+        window.approveWithdraw = function(phone, amount) {
+            pendingWithdrawals = pendingWithdrawals.filter(w => !(w.phone === phone && w.amount === amount));
+            localStorage.setItem('shynechrital_pendingWithdrawals', JSON.stringify(pendingWithdrawals));
+            renderAdminDashboard();
+            alert("Retrait validé !");
+        };
+
+        window.onload = function() {
+            if (!checkDeviceSecurity()) return;
+            checkUrlReferralParam();
+
+            const savedUser = localStorage.getItem('shynechrital_current_user');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    checkDailyPayouts();
+
+                    document.getElementById('tab-register').classList.add('hidden');
+                    document.getElementById('tab-today').classList.remove('hidden');
+                    document.getElementById('bottom-nav').classList.remove('hidden');
+
+                    updateUI();
+                    renderHomeMinersList();
+                    renderActionsList();
+                    startDailyCheckLoop();
+                    startWheelTimerLoop();
+                } catch (e) {
+                    console.error("Erreur de session", e);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
